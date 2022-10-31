@@ -19,6 +19,7 @@ namespace Business.Concrete
             _productDal = productDal;
         }
 
+        //[LogAspect] --> AOP
         public IResult Add(Product product)
         {
             //Business codes
