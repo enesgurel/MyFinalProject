@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Autofac.Extras.DynamicProxy;
 using Business.Abstract;
+using Business.CCS;
 using Business.Concrete;
 using Castle.DynamicProxy;
 using Core.Utilities.Interceptors;
@@ -18,6 +19,9 @@ namespace Business.DependencyResolvers.Autofac
         {
             builder.RegisterType<ProductManager>().As<IProductService>().SingleInstance(); // datanın kendisini tutmadığını bildiğimiz için operasyon taşıması için single instance kullandık
             builder.RegisterType<EfProductDal>().As<IProductDal>().SingleInstance();
+
+            builder.RegisterType<CategoryManager>().As<ICategoryService>().SingleInstance(); // datanın kendisini tutmadığını bildiğimiz için operasyon taşıması için single instance kullandık
+            builder.RegisterType<EfCategoryDal>().As<ICategoryDal>().SingleInstance();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
