@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Business.BusinessAspects.Autofac;
 
 namespace Business.Concrete
 {
@@ -27,6 +28,8 @@ namespace Business.Concrete
             _categoryService = categoryService;
         }
 
+        //Claim
+        [SecuredOperation("product.add, admin")]
         [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
@@ -38,7 +41,7 @@ namespace Business.Concrete
                 CheckIfCategoryLimitExceded()
                 );
 
-            if (result != null) {   return result;  }
+            if (result != null) { return result; }
 
             _productDal.Add(product);
 
