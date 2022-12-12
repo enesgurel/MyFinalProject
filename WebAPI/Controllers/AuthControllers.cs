@@ -51,12 +51,5 @@ namespace WebAPI.Controllers
 
             return BadRequest(result.Message);
         }
-
-
-        [HttpGet("test")]
-        public IActionResult Test()
-        {
-            return Ok("test");
-        }
     }
 }
